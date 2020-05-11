@@ -1,0 +1,38 @@
+{
+  "name": "conker-send",
+  "type": "flogo:activity",
+  "version": "0.0.1",
+  "title": "Conker Send",
+  "description": "Action to send to Conker",
+  "homepage": "https://github.com/rstinear/workflow",
+  "settings": [
+    {
+      "name": "token",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "uri",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "input": [
+    {
+      "name": "projectID",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "callsign",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "output": [
+    {
+      "name": "anOutput",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+syntax = "proto3";
+package conker.v1;
+
+service RobotControl {
+    rpc ConnectRobot(ConnectRequest) returns (stream ControlMessage) {}
+    rpc ConnectRobotWithAckStream(stream ControlAck) returns (stream ControlMessage) {}
+    rpc ControlRobot(stream ControlMessage) returns (ControlEnd) {}
+    rpc ControlRobotCall(ControlMessage) returns (ControlAck) {}
+    rpc ControlRobotCallWithAckStream(ControlMessage) returns (stream ControlAck) {}
+}
+
+message ConnectRequest {
+}
+
+message ControlMessage {
+    string destination = 1;
+    bytes payload = 2;
+    string txid = 3;
+    map<string,string> meta = 4;
+}
+
+message ControlEnd {
+    int32 code = 1;
+    string reason = 2;
+}
+
+message ControlAck {
+    bool success = 1;
+    string stage = 2;
+    string message = 3;
+    string txid = 4;
+    int32 seq = 5;
+}
+
+message ConnectAck {
+}
+
+message StatusRequest {
+}
+
+message StatusMessage {
+    repeated string ConnectedRobots = 1;
+}
+
